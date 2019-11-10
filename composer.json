@@ -1,0 +1,5 @@
+{
+    "require": {
+        "mautic/api-library": "^2.10"
+    }
+}

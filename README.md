@@ -32,7 +32,7 @@ You can read more about this and how to config it in the `multi-instance.php` fi
 1. Clear your Mautic instance cache (using CLI navigate to the Mautic root folder and run `rm -rf app/cache/*`).
 
 
-### How to Configure it
+## How to Configure it
 
 **IMPORTANT: Please read this full documentation to really understand how to config Wootic correctly and leaverage all the power of this plugin in your site.**
 
@@ -44,7 +44,7 @@ You can use the best for your requierements or use both to send the information 
 
 The API method is more simple, have more options and makes more simple the configuration.
 
-#### How to config Wootic with the API method? 
+### How to config Wootic with the API method? 
 
 You just have to create a user and a SECURE password for the woocommerce integration and set it in `Woocommerce` > `Settings` > `Mautic Integration`.
 
@@ -58,7 +58,7 @@ This works amaizing if you have a business with just a couple of products and s 
 
 The caveat here is that this method is simpler but slower.
 
-#### How to config Wootic with the FORM method? 
+### How to config Wootic with the FORM method? 
 
 After testing alternatives we find that **sending the info using forms is 2X faster** thats why we add this new Form Method.
 
@@ -85,7 +85,7 @@ You will need to add a special SKU to every product too to set the order status 
 1. Set the requiered products SKU.
 
 
-##### How to set this forms in Mautic?
+#### How to set this forms in Mautic?
 
 With this fields:
 
@@ -117,7 +117,7 @@ With this fields:
 Every field you config like this will be populated with data from the transaction order.
 
 
-##### How must be set the product SKU in your products?
+#### How must be set the product SKU in your products?
 
 Like this:
 
@@ -170,7 +170,7 @@ Use this:
 https://github.com/afragen/github-updater
 
 
-#### Questions, Ideas or Problems
+### Questions, Ideas or Problems
 
 If you have questions, find a bug or have a new idea for the plugin just write it in the `issues` section.
 

@@ -140,16 +140,16 @@ The first 2 letters are the order status code.
 This is the full list of codes for every order action:
 
 
-`CA` > `cancelled`
-`PE` > `pending`
-`OH` > `on-hold`
-`FA` > `failed`
-`CO` > `completed`
-`PR` > `processing`
-`RE` > `refunded`
-`AC` > `active`
-`EX` > `expired`
-`PC` > `pending-cancel`
+* `CA` > `cancelled`
+* `PE` > `pending`
+* `OH` > `on-hold`
+* `FA` > `failed`
+* `CO` > `completed`
+* `PR` > `processing`
+* `RE` > `refunded`
+* `AC` > `active`
+* `EX` > `expired`
+* `PC` > `pending-cancel`
 
 
 The last number is the ID of the Mautic form.

@@ -4,7 +4,10 @@
 
 $plugin_settings = array(
 
+    'enable_forms'              => ( get_option( 'mautic_woocommerce_settings_mautic_enable_forms'           ) == 'yes' ) ? TRUE : FALSE,
+    'enable_api'                => ( get_option( 'mautic_woocommerce_settings_mautic_enable_api'             ) == 'yes' ) ? TRUE : FALSE,
     'add_fields'                => ( get_option( 'mautic_woocommerce_settings_mautic_add_fields'             ) == 'yes' ) ? TRUE : FALSE,
+    'check_fields'              => ( get_option( 'mautic_woocommerce_settings_mautic_check_fields'           ) == 'yes' ) ? TRUE : FALSE,
     'add_tags'                  => ( get_option( 'mautic_woocommerce_settings_mautic_add_tags'               ) == 'yes' ) ? TRUE : FALSE,
 	'add_id_to_tags'            => ( get_option( 'mautic_woocommerce_settings_mautic_add_id_to_tags'         ) == 'yes' ) ? TRUE : FALSE,
     'add_note'                  => ( get_option( 'mautic_woocommerce_settings_mautic_add_note'               ) == 'yes' ) ? TRUE : FALSE,

@@ -4,7 +4,7 @@
 Plugin Name: Wootic
 Plugin URI: https://github.com/maxitromer/wootic
 Description: Send your Woocommerce order transactions and client data to Mautic
-Version: 0.1.0
+Version: 0.2.0
 Author: Maxi Tromer
 Author URI: https://github.com/maxitromer
 Developer: Maxi Tromer
@@ -65,7 +65,7 @@ function mautic_woocommerce_tab_settings() {
 			'name'        => __('Mautic URL', 'woo_mautic_integration'),
 			'type'        => 'text',
 			'css'         => 'min-width:200px;',
-			'desc_tip'    => __('Include http/https', 'woo_mautic_integration'),
+			'desc_tip'    => __('Include http or https and final /', 'woo_mautic_integration'),
 			'placeholder' =>  __('Your Mautic URL (including http/https)', 'woo_mautic_integration'),
 			'id'          => 'mautic_woocommerce_settings_server'
 		),
@@ -90,6 +90,55 @@ function mautic_woocommerce_tab_settings() {
 			'id'       => 'mautic_woocommerce_settings_mautic_sku_filter'
 		),
 
+		'mautic_enable_forms' => array(
+			'name'     => __( 'Integrate Using Forms', 'woo_mautic_integration' ),
+			'desc'     => __( 'Fastest integration method. Recommended for Mautic instances with big lists of contacts or several campaigns and processes in place.', 'woo_mautic_integration' ),
+			'desc_tip' => __( "Requieres manual form setup in Mautic and SKU specific completion per product. (User and password not requiered)", 'woo_mautic_integration' ),
+			'std'      => 'yes', // WooCommerce < 2.0
+    		'default'  => 'yes', // WooCommerce >= 2.0
+			'id'       => 'mautic_woocommerce_settings_mautic_enable_forms',
+			'type'     => 'checkbox'
+		),
+
+		'mautic_enable_api' => array(
+			'name'     => __( 'Integrate Using the API', 'woo_mautic_integration' ),
+			'desc'     => __( 'Simpler and more completed integration. Use if you will have a few products and a few contacts to ensure smooth operation.', 'woo_mautic_integration' ),
+			'desc_tip' => __( "All the options work with this integration method, even the custom fields could be automatically created.", 'woo_mautic_integration' ),
+			'std'      => 'no', // WooCommerce < 2.0
+    		'default'  => 'no', // WooCommerce >= 2.0
+			'id'       => 'mautic_woocommerce_settings_mautic_enable_api',
+			'type'     => 'checkbox'
+		),
+
+		'mautic_send_partial_statuses' => array(
+			'name'        => __( 'Send Partial Statuses', 'woo_mautic_integration' ),
+			'desc'        => __( 'Enable to send all the partial order statuses.', 'woo_mautic_integration' ),
+			'desc_tip'    => __( "By default Wootic only send 'completed' and 'refunded' transactions (and 'active' or 'cancelled' for subscriptions).", 'woo_mautic_integration' ),
+		    'std'             => 'no', // WooCommerce < 2.0
+		    'default'         => 'no', // WooCommerce >= 2.0			
+			'id'          => 'mautic_woocommerce_settings_mautic_send_partial_statuses',
+			'type'        => 'checkbox'
+		),	
+
+		'mautic_add_phone' => array(
+			'name'    => __( 'Include Phone', 'woo_mautic_integration' ),
+			'desc'    => __( "Include just the contact's phone from the billing section of the checkout.", 'woo_mautic_integration'  ),
+		    'std'             => 'yes', // WooCommerce < 2.0
+		    'default'         => 'yes', // WooCommerce >= 2.0			
+			'id'      => 'mautic_woocommerce_settings_mautic_add_phone',
+			'type'    => 'checkbox'
+		),
+
+		'mautic_add_billing' => array(
+			'name'            => __( 'Include Billing Information', 'woo_mautic_integration' ),
+			'desc'            => __( "Include all the contact's billing information when is populated in the checkout.", 'woo_mautic_integration' ),
+			'desc_tip'        => __( "This will EXCLUDE TO SYNC the 'city', 'state' and 'country' fields due an incompatibility between Mautic and Woocommerce", 'woo_mautic_integration' ),
+		    'std'             => 'yes', // WooCommerce < 2.0
+		    'default'         => 'yes', // WooCommerce >= 2.0				
+			'id'              => 'mautic_woocommerce_settings_mautic_add_billing',			
+			'type'            => 'checkbox'
+		),
+
 		'mautic_add_fields' => array(
 			'name'     => __( 'Add Custom Fields', 'woo_mautic_integration' ),
 			'desc'     => __( 'Add a custom field for every product (and put the status of the order as value).', 'woo_mautic_integration' ),
@@ -100,21 +149,31 @@ function mautic_woocommerce_tab_settings() {
 			'type'     => 'checkbox'
 		),
 
+		'mautic_check_fields' => array(
+			'name'     => __( 'Check and Create Fields', 'woo_mautic_integration' ),
+			'desc'     => __( 'API ONLY. Check if custom fields exist, if not will be created automatically.', 'woo_mautic_integration' ),
+			'desc_tip' => __( "Not recommended if you have a store with several products because will slow down processes and will requiere more server resources.", 'woo_mautic_integration' ),
+			'std'      => 'no', // WooCommerce < 2.0
+    		'default'  => 'no', // WooCommerce >= 2.0
+			'id'       => 'mautic_woocommerce_settings_mautic_check_fields',
+			'type'     => 'checkbox'
+		),						
+
 		'mautic_add_note' => array(
 			'name'    => __( 'Add Notes', 'woo_mautic_integration' ),
-			'desc'    => __( 'Add a note for every product transaction with the most important order data.', 'woo_mautic_integration' ),
-		    'std'             => 'yes', // WooCommerce < 2.0
-		    'default'         => 'yes', // WooCommerce >= 2.0	
+			'desc'    => __( 'API ONLY. Add a note for every product transaction with the most important order data.', 'woo_mautic_integration' ),
+		    'std'             => 'no', // WooCommerce < 2.0
+		    'default'         => 'no', // WooCommerce >= 2.0	
 			'id'      => 'mautic_woocommerce_settings_mautic_add_note',
 			'type'    => 'checkbox'
 		),
 
 		'mautic_add_tags' => array(
 			'name'            => __( 'Add Tags', 'woo_mautic_integration' ),
-			'desc'            => __( "Add a tag with the SKU of the product (or name if don't have SKU) and the order status in the format tag_status.", 'woo_mautic_integration' ),
+			'desc'            => __( "API ONLY. Add a tag with the SKU of the product (or name if don't have SKU) and the order status in the format tag_status.", 'woo_mautic_integration' ),
 			'id'              => 'mautic_woocommerce_settings_mautic_add_tags',
-		    'std'             => 'yes', // WooCommerce < 2.0
-		    'default'         => 'yes', // WooCommerce >= 2.0			
+		    'std'             => 'no', // WooCommerce < 2.0
+		    'default'         => 'no', // WooCommerce >= 2.0			
 			'checkboxgroup'	  => 'start',
 			'show_if_checked' => 'option',
 			'type'            => 'checkbox'
@@ -132,35 +191,11 @@ function mautic_woocommerce_tab_settings() {
 
 		'mautic_add_general_tags' => array(
 			'name'        => __( 'General Tags', 'woo_mautic_integration' ),
-			'desc_tip'    => __( "Will work only if 'Add Tags' are enabled. This will be included with every order transaction. Use text separated with commas for several tags.", 'woo_mautic_integration' ),
+			'desc_tip'    => __( "API ONLY. Will work only if 'Add Tags' are enabled. This will be included with every order transaction. Use text separated with commas for several tags.", 'woo_mautic_integration' ),
 			'id'          => 'mautic_woocommerce_settings_mautic_add_general_tags',
 			'css'         => 'min-width:200px;',
 			'type'        => 'text'
 		),
-
-		'mautic_add_phone' => array(
-			'name'    => __( 'Include Phone', 'woo_mautic_integration' ),
-			'desc'    => __( "Include just the contact's phone from the billing section of the checkout.", 'woo_mautic_integration'  ),
-			'id'      => 'mautic_woocommerce_settings_mautic_add_phone',
-			'type'    => 'checkbox'
-		),
-
-		'mautic_add_billing' => array(
-			'name'            => __( 'Include Billing Information', 'woo_mautic_integration' ),
-			'desc'            => __( "Include all the contact's billing information when is populated in the checkout.", 'woo_mautic_integration' ),
-			'desc_tip'        => __( "This will EXCLUDE TO SYNC the 'city', 'state' and 'country' fields due an incompatibility between Mautic and Woocommerce", 'woo_mautic_integration' ),
-			'id'              => 'mautic_woocommerce_settings_mautic_add_billing',			
-			'type'            => 'checkbox'
-		),
-
-		'mautic_send_partial_statuses' => array(
-			'name'        => __( 'Send Partial Statuses', 'woo_mautic_integration' ),
-			'desc'        => __( 'Enable to send all the partial order statuses.', 'woo_mautic_integration' ),
-			'desc_tip'    => __( "By default Wootic only send 'completed' and 'refounded' transactions (and 'active' or 'cancelled' for subscriptions).", 'woo_mautic_integration' ),
-			'id'          => 'mautic_woocommerce_settings_mautic_send_partial_statuses',
-			'type'        => 'checkbox'
-		),																
-
 
 		'mautic_section_end' => array(
 			'type' => 'sectionend',

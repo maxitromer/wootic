@@ -1,8 +1,10 @@
 # Wootic - Mautic Integration for WooCommerce
 
-The FASTER PLUGIN to send your Woocommerce order transactions and client data to Mautic.
+**The FASTER PLUGIN to send your Woocommerce order transactions and client data to Mautic.**
 
 Integrated with `Woocommerce Subscriptions` too.
+
+## What you can do with Wootic?
 
 * You can config Wootic just with a couple of clicks to receive the data in forms, custom fields, tags and/or notes.
 
@@ -14,20 +16,25 @@ Integrated with `Woocommerce Subscriptions` too.
 
 * You can config Wootic to send the client phone to Mautic or include all the billing data from the checkout.
 
-**ADVANCED**: You can even config several Mautic instances to receive your Woocommerce transactions filtering by product SKU (simple code requiered).
+**ADVANCED** 
+
+* You can even config several Mautic instances to receive your Woocommerce transactions filtering by product SKU (simple code requiered).
+
+You can read more about this and how to config it in the `multi-instance.php` file.
 
 
-## Installation
-
-
-#### Plugin installation
+## How to Install it
 
 1. Upload the plugin files to the `/wp-content/plugins/wootic/` directory, or install the plugin through the WordPress plugins screen directly. Activate through the 'Plugins' screen in WordPress.
+
 1. Go to `Woocommerce` > `Settings` > `Mautic Integration` to set your user information.
+
 1. Clear your Mautic instance cache (using CLI navigate to the Mautic root folder and run `rm -rf app/cache/*`).
 
 
-#### How to Configure it
+### How to Configure it
+
+**IMPORTANT: Please read this full documentation to really understand how to config Wootic correctly and leaverage all the power of this plugin in your site.**
 
 This plugin have 2 integration methods.
 
@@ -37,7 +44,7 @@ You can use the best for your requierements or use both to send the information 
 
 The API method is more simple, have more options and makes more simple the configuration.
 
-How to config Wootic with this method? 
+#### How to config Wootic with the API method? 
 
 You just have to create a user and a SECURE password for the woocommerce integration and set it in `Woocommerce` > `Settings` > `Mautic Integration`.
 
@@ -51,11 +58,15 @@ This works amaizing if you have a business with just a couple of products and s 
 
 The caveat here is that this method is simpler but slower.
 
-Thats why after testing alternatives we find that sending the info using forms is 2X faster and add the new Form Method to send data to Mautic.
+#### How to config Wootic with the FORM method? 
+
+After testing alternatives we find that **sending the info using forms is 2X faster** thats why we add this new Form Method.
 
 This is usesful if you have or plan to have a big list of contacts in Mautic or several campaigns and segment filters that could slowdown your instance.
 
-You are not be able to receive `tags` or `notes`, only forms but you can fire that tags or notes using a campaign when that form is completed.
+You are not be able to receive `tags` or `notes`, only forms ... 
+
+... but you can fire that tags or notes using a campaign when that form is completed.
 
 With this method you will need to create and config the Mautic forms for every order status you want to receive.
 
@@ -65,7 +76,16 @@ This makes extremelly flexible the plugin and you can config everything as your 
 
 You will need to add a special SKU to every product too to set the order status and form number you want to receive your data into mautic.
 
-How to config this forms in Mautic?
+3 requiered steps to make this method work:
+
+1. Enable the Forms Integration method in the plugin settings.
+
+1. Set the requiered forms in Mautic.
+
+1. Set the requiered products SKU.
+
+
+##### How to set this forms in Mautic?
 
 With this fields:
 
@@ -73,12 +93,21 @@ With this fields:
 * lastname
 * email
 * phone
+* company
+* address1
+* address2
+* zipcode
+* city
+* state
+* country
 * order_id
 * order_parent_id
 * order_status
 * order_currency
 * order_payment_method
 * order_payment_title
+* subscription_id
+* subscription_status
 * product_id
 * product_name
 * product_type
@@ -87,15 +116,16 @@ With this fields:
 
 Every field you config like this will be populated with data from the transaction order.
 
-How must be config the product SKU in your products?
+
+##### How must be set the product SKU in your products?
 
 Like this:
 
-`BRAND_CO87-PR87-OH87-RE87-PE87-AC87-CA88_PT15`
+`BRAND_CO87-PR8-OH19-RE87-PE87-AC3-CA88_PT15`
 
 As you can see that SKU have 3 parts divided by `_`.
 
-`BRAND` `_` `CO87-PR87-OH87-RE87-PE87-AC87-CA88` `_` `PT15`
+`BRAND`  `_`  `CO87-PR8-OH19-RE87-PE87-AC3-CA88`  `_`  `PT15`
 
 The first part could be used for the SKU filter of the plugin, in this case the `BRAND` part.
 
@@ -109,25 +139,31 @@ The first 2 letters are the order status code.
 
 This is the full list of codes for every order action:
 
-'cancelled'      => 'CA',
-'pending'        => 'PE',
-'on-hold'        => 'OH',
-'failed'         => 'FA',
-'completed'      => 'CO',
-'processing'     => 'PR',
-'refunded'       => 'RE',
-'active'         => 'AC',
-'expired'        => 'EX',
-'pending-cancel' => 'PC',
+
+`CA` > `cancelled`
+`PE` > `pending`
+`OH` > `on-hold`
+`FA` > `failed`
+`CO` > `completed`
+`PR` > `processing`
+`RE` > `refunded`
+`AC` > `active`
+`EX` > `expired`
+`PC` > `pending-cancel`
+
 
 The last number is the ID of the Mautic form.
 
 This action `CO87` will fire when an order has the status of `completed` and will send the information to the Mautic form with the ID `87`.
 
+Yes, you can add all the ACTION FORMS you need.
+
+Yes, you can repeat order codes and/or form IDs and will be fired.
+
 That's all you need to know to start with Wootic.
 
 
-#### How to update Wootic?
+### How to update Wootic?
 
 Use this:
 

@@ -1,10 +1,15 @@
 # Wootic - Mautic Integration for WooCommerce
 
+
+
 **The FASTER PLUGIN to send your Woocommerce order transactions and client data to Mautic.**
+
 
 Integrated with `Woocommerce Subscriptions` too.
 
+
 ## What you can do with Wootic?
+
 
 * You can config Wootic just with a couple of clicks to receive the data in forms, custom fields, tags and/or notes.
 
@@ -25,6 +30,7 @@ You can read more about this and how to config it in the `multi-instance.php` fi
 
 ## How to Install it
 
+
 1. Upload the plugin files to the `/wp-content/plugins/wootic/` directory, or install the plugin through the WordPress plugins screen directly. Activate through the 'Plugins' screen in WordPress.
 
 1. Go to `Woocommerce` > `Settings` > `Mautic Integration` to set your user information.
@@ -32,7 +38,9 @@ You can read more about this and how to config it in the `multi-instance.php` fi
 1. Clear your Mautic instance cache (using CLI navigate to the Mautic root folder and run `rm -rf app/cache/*`).
 
 
+
 ## How to Configure it
+
 
 **IMPORTANT: Please read this full documentation to really understand how to config Wootic correctly and leaverage all the power of this plugin in your site.**
 
@@ -40,11 +48,16 @@ This plugin have 2 integration methods.
 
 The API method used in every plugin outhere and the form method.
 
-You can use the best for your requierements or use both to send the information for different channels (not recommended but posible).
+You can use one or both methods at the same time to send the information for different channels (not recommended but posible).
 
-The API method is more simple, have more options and makes more simple the configuration.
+The API method is simpler to use and have more options and tools.
+
+The FORM method is faster and more flexible but more complex to config and use.
+
+
 
 ### How to config Wootic with the API method? 
+
 
 You just have to create a user and a SECURE password for the woocommerce integration and set it in `Woocommerce` > `Settings` > `Mautic Integration`.
 
@@ -58,7 +71,10 @@ This works amaizing if you have a business with just a couple of products and s 
 
 The caveat here is that this method is simpler but slower.
 
+
+
 ### How to config Wootic with the FORM method? 
+
 
 After testing alternatives we find that **sending the info using forms is 2X faster** thats why we add this new Form Method.
 
@@ -86,6 +102,7 @@ You will need to add a special SKU to every product too to set the order status 
 
 
 #### How to set this forms in Mautic?
+
 
 With this fields:
 
@@ -118,6 +135,7 @@ Every field you config like this will be populated with data from the transactio
 
 
 #### How must be set the product SKU in your products?
+
 
 Like this:
 
@@ -165,14 +183,14 @@ That's all you need to know to start with Wootic.
 
 ### How to update Wootic?
 
+
 Use this:
 
 https://github.com/afragen/github-updater
 
 
-### Questions, Ideas or Problems
-
-If you have questions, find a bug or have a new idea for the plugin just write it in the `issues` section.
+### Questions, Ideas or Problems?
 
 
+Just write it IN A DETAILED AND COMPRENSIVE WAY in the `Issues` section.
 

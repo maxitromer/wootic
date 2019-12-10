@@ -1,5 +1,9 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 use Mautic\MauticApi;
 use Mautic\Auth\ApiAuth;
 

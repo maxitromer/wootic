@@ -4,7 +4,7 @@
 Plugin Name: Wootic
 Plugin URI: https://github.com/maxitromer/wootic
 Description: Send your Woocommerce order transactions and client data to Mautic
-Version: 0.2.0
+Version: 0.2.1
 Author: Maxi Tromer
 Author URI: https://github.com/maxitromer
 Developer: Maxi Tromer

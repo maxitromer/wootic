@@ -194,8 +194,8 @@ Use this:
 https://github.com/afragen/github-updater
 
 
-### Questions, Ideas or Problems?
+### Questions, Ideas (or Problems)?
 
 
-Just write it IN A DETAILED AND COMPRENSIVE WAY in the `Issues` section.
+Just write me IN A DETAILED AND COMPRENSIVE WAY in the `Issues` section so I can help you better.
 

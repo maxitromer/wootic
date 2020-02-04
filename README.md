@@ -56,12 +56,17 @@ The FORM method is faster and more flexible but more complex to config and use.
 
 
 
-### How to config Wootic with the API method? 
+### How to use Wootic with the API method? 
 
+1. Enable the API with the basic auth method.
 
-You just have to create a user and a SECURE password for the woocommerce integration and set it in `Woocommerce` > `Settings` > `Mautic Integration`.
+Here is how to do it:
 
-Then simply select your prefered options and enjoy.
+![mautic-api-settings](https://user-images.githubusercontent.com/6311835/73707860-6be25a80-46db-11ea-8867-247e043ce035.png)
+
+2. Create a user and a SECURE password just used for this woocommerce integration and set it in `Woocommerce` > `Settings` > `Mautic Integration`.
+
+3. Clear your Mautic instance cache (navigate to the Mautic root folder and run `rm -rf app/cache/*`). and enjoy :-)
 
 You will receive all the selected order transactions in custom fields, notes or tags as you specify in the plugin options.
 
@@ -73,7 +78,7 @@ The caveat here is that this method is simpler but slower.
 
 
 
-### How to config Wootic with the FORM method? 
+### How to use Wootic with the FORM method? 
 
 
 After testing alternatives we find that **sending the info using forms is 2X faster** thats why we add this new Form Method.

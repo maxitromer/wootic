@@ -183,7 +183,21 @@ Yes, you can add all the ACTION FORMS you need.
 
 Yes, you can repeat order codes and/or form IDs and will be fired.
 
+The 3rd part (`PT15` in this example) could be used for the SKU itself with your product information ( `JEAN-235544` ) or could be blank if you dont use SKU for your products.
+
 That's all you need to know to start with Wootic.
+
+
+### How to track abandoned Carts?
+
+
+You can use Wootic to track and send mails to `pending`, `on-hold` or `failed` orders.
+
+If you want to track abandoned carts BEFORE the order is placed you can use this:
+
+https://wordpress.org/plugins/woo-cart-abandonment-recovery/ (FREE)
+
+https://wordpress.org/plugins/wp-marketing-automations/ (FREE)
 
 
 ### How to update Wootic?
@@ -194,8 +208,8 @@ Use this:
 https://github.com/afragen/github-updater
 
 
-### Questions, Ideas (or Problems)?
+### New Ideas / Questions / Contributing / Bugs
 
 
-Just write me IN A DETAILED AND COMPRENSIVE WAY in the `Issues` section so I can help you better.
+Check the GitHub issues if it is already listed in there; if not, write IN A DETAILED AND COMPRENSIVE WAY in the `Issues` section so I can help you better.
 

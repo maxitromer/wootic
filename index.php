@@ -242,9 +242,9 @@ function order_status_changed_action( $order_id, $old_status, $new_status ){
 
 	$api_settings = array(
 
-	    'apiURL'     => "https://m.puramura.com/", 
-	    'userName'   => 'maxitromer',           // Api user       
-	    'password'   => 'maxi1465'              // Secure password
+	    'apiURL'     => "https://example.com/", 
+	    'userName'   => 'user',           // Api user       
+	    'password'   => 'pass'              // Secure password
 
 	);
 
